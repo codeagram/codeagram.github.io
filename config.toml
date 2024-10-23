@@ -2,6 +2,7 @@ baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Arunkumar | Software Engineer"
 disableKinds = ["taxonomy", "taxonomyTerm"]
+theme = "hugo-coder"
 
 [params]
   name = "Your Name"
