@@ -92,14 +92,18 @@ url = "https://example.com"
   title = "About Me"
   #image = "/images/me.png"
   content = """
-I am a software developer with a passion for web development. I have a background in computer science and mathematics, and I have a strong interest in the intersection of technology and art. I am currently working as a software developer at [example org.](https://example.com) in San Francisco, CA.
+Hello! I am a passionate software engineer with nearly six years of experience. My skill set includes Java, Go, Python, JavaScript, and TypeScript, enabling me to build robust backend solutions with Spring Boot, Node.js, and Nest.js, as well as engaging front-end interfaces using Angular.
 
-I am currently working on a project that will be used to help people find the best way to get around the city."""
+I have hands-on experience with PostgreSQL for database management, and I utilize Docker and Kubernetes for scalable application deployments. Driven by a curiosity to learn more, I stay updated with emerging technologies, particularly in distributed systems and observability.
+
+My commitment to quality ensures efficient and maintainable code. Currently, I am seeking new opportunities where I can provide value and help shape impactful digital experiences.
+"""
 
     [params.about.skills]
     enable = true
-    title = "Here are a few technologies I've been working with recently:"
-    items = [ "HTML", "CSS", "JavaScript", "React", "Node", "Express" ]
+    title = ""
+    items = []
+
 
   [params.experience]
   enable = true
