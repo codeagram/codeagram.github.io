@@ -1,0 +1,18 @@
+<section id="experience" class="section bg-white">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="section-title">Experience</h2>
+        <div class="space-y-12">
+            {{ range .Site.Data.experience }}
+            <div class="border-l-4 border-primary pl-4">
+                <h3 class="text-xl font-semibold text-primary">{{ .role }}</h3>
+                <p class="text-secondary mb-2">{{ .company }} • {{ .period }}</p>
+                <ul class="list-disc list-inside text-secondary">
+                    {{ range .achievements }}
+                    <li>{{ . }}</li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>

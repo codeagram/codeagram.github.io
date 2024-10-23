@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .section {
+        @apply min-h-screen px-4 py-16 sm:px-6 lg:px-8;
+    }
+
+    .section-title {
+        @apply text-3xl font-bold text-primary mb-8 text-center;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0ZGluIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBIiwiZmlsZSI6InN0ZGluIiwic291cmNlc0NvbnRlbnQiOlsiQHRhaWx3aW5kIGJhc2U7XG5AdGFpbHdpbmQgY29tcG9uZW50cztcbkB0YWlsd2luZCB1dGlsaXRpZXM7XG5cbkBsYXllciBjb21wb25lbnRzIHtcbiAgICAuc2VjdGlvbiB7XG4gICAgICAgIEBhcHBseSBtaW4taC1zY3JlZW4gcHgtNCBweS0xNiBzbTpweC02IGxnOnB4LTg7XG4gICAgfVxuXG4gICAgLnNlY3Rpb24tdGl0bGUge1xuICAgICAgICBAYXBwbHkgdGV4dC0zeGwgZm9udC1ib2xkIHRleHQtcHJpbWFyeSBtYi04IHRleHQtY2VudGVyO1xuICAgIH1cbn1cblxuaHRtbCB7XG4gICAgc2Nyb2xsLWJlaGF2aW9yOiBzbW9vdGg7XG59Il19 */
