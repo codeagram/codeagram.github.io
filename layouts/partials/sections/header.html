@@ -23,26 +23,35 @@
 {{ $showNavBarOnScrollUp := .Site.Params.navbar.stickyNavBar.showOnScrollUp | default false }}
 <script>
     var prevScrollPos = window.pageYOffset;
+
     window.addEventListener("scroll", function showHeaderOnScroll() {
         let profileHeaderElem = document.getElementById("profileHeader");
         let currentScrollPos = window.pageYOffset;
         let resetHeaderStyle = false;
-        let showNavBarOnScrollUp = {{ $showNavBarOnScrollUp }};
+
+        // Make sure to close the template tag correctly
+        let showNavBarOnScrollUp = true;
+
         let showNavBar = showNavBarOnScrollUp ? prevScrollPos > currentScrollPos : currentScrollPos > 0;
+
         if (showNavBar) {
             profileHeaderElem.classList.add("showHeaderOnTop");
         } else {
             resetHeaderStyle = true;
         }
-        if(currentScrollPos === 0) {
+
+        if (currentScrollPos === 0) {
             resetHeaderStyle = true;
         }
-        if(resetHeaderStyle) {
+
+        if (resetHeaderStyle) {
             profileHeaderElem.classList.remove("showHeaderOnTop");
         }
+
         prevScrollPos = currentScrollPos;
     });
 </script>
+
 {{ end }}
 
 <!-- Navbar -->
@@ -61,17 +70,21 @@
             </a>
 
             {{ if not (.Site.Params.navbar.disableSearch | default false) }}
-                <div>
-                    <input id="search" autocomplete="off" class="form-control mr-sm-2 d-none d-md-block" placeholder='{{ .Site.Params.navbar.searchPlaceholder | default "Ctrl + k to Search..."}}'
-                        aria-label="Search" oninput="searchOnChange(event)">
-                </div>
+            <div>
+                <input id="search" autocomplete="off" class="form-control mr-sm-2 d-none d-md-block"
+                    placeholder='{{ .Site.Params.navbar.searchPlaceholder | default "Ctrl + k to Search..."}}'
+                    aria-label="Search" oninput="searchOnChange(event)">
+            </div>
             {{ end }}
 
             <!-- navbar toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true">
-                    <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24"
+                    data-view-component="true">
+                    <path fill-rule="evenodd"
+                        d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z">
+                    </path>
                 </svg>
             </button>
 
@@ -79,11 +92,13 @@
             <div class="collapse navbar-collapse text-wrap primary-font" id="navbarContent">
                 <ul class="navbar-nav {{ .Site.Params.navbar.align | default "ms-auto"}} text-center">
                     {{ if not (.Site.Params.navbar.disableSearch | default false) }}
-                        <li class="nav-item navbar-text d-block d-md-none">
-                            <div class="nav-link">
-                                <input id="search" autocomplete="off" class="form-control mr-sm-2" placeholder='{{ .Site.Params.navbar.searchPlaceholder | default "Ctrl + k to Search..."}}' aria-label="Search" oninput="searchOnChange(event)">
-                            </div>
-                        </li>
+                    <li class="nav-item navbar-text d-block d-md-none">
+                        <div class="nav-link">
+                            <input id="search" autocomplete="off" class="form-control mr-sm-2"
+                                placeholder='{{ .Site.Params.navbar.searchPlaceholder | default "Ctrl + k to Search..."}}'
+                                aria-label="Search" oninput="searchOnChange(event)">
+                        </div>
+                    </li>
                     {{ end }}
 
                     {{ if and (.Site.Params.about.enable | default false) (not (.Site.Params.navbar.menus.disableAbout | default false)) }}
@@ -96,8 +111,7 @@
 
                     {{ if and (.Site.Params.experience.enable | default false) (not (.Site.Params.navbar.menus.disableExperience | default false)) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#experience"
-                            aria-label="experience">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#experience" aria-label="experience">
                             {{ .Site.Params.experience.title | default "Experience" }}
                         </a>
                     </li>
@@ -105,8 +119,7 @@
 
                     {{ if and (.Site.Params.education.enable | default false) (not (.Site.Params.navbar.menus.disableEducation | default false)) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#education"
-                            aria-label="education">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#education" aria-label="education">
                             {{ .Site.Params.education.title | default "Education" }}
                         </a>
                     </li>
@@ -114,8 +127,7 @@
 
                     {{ if and (.Site.Params.projects.enable | default false) (not (.Site.Params.navbar.menus.disableProjects | default false)) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#projects"
-                            aria-label="projects">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#projects" aria-label="projects">
                             {{ .Site.Params.projects.title | default "Projects" }}
                         </a>
                     </li>
@@ -123,8 +135,7 @@
 
                     {{ if and (.Site.Params.achievements.enable | default false) (not (.Site.Params.navbar.menus.disableAchievements | default false)) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#achievements"
-                            aria-label="achievements">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#achievements" aria-label="achievements">
                             {{ .Site.Params.achievements.title | default "Achievements" }}
                         </a>
                     </li>
@@ -132,16 +143,17 @@
 
                     {{ if and (.Site.Params.contact.enable | default false) (not (.Site.Params.navbar.menus.disableContact | default false)) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#contact"
-                            aria-label="contact">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#contact" aria-label="contact">
                             {{ .Site.Params.contact.title | default "Contact" }}
                         </a>
                     </li>
                     {{ end }}
 
                     {{ if and .Site.Menus.main (.Site.Params.navbar.enableSeparator | default false) }}
-                        <li class="nav-item navbar-text d-none d-lg-block d-xl-block"><div class="nav-link nav-link-sep"></div></li>
-                        <div class="dropdown-divider"></div>
+                    <li class="nav-item navbar-text d-none d-lg-block d-xl-block">
+                        <div class="nav-link nav-link-sep"></div>
+                    </li>
+                    <div class="dropdown-divider"></div>
                     {{ end }}
 
                     <!-- custom menus from the user -->
@@ -155,8 +167,7 @@
                         </a>
                         <div class="dropdown-menu shadow-lg rounded" aria-labelledby="navbarDropdown">
                             {{ range .Children }}
-                            <a class="dropdown-item text-center nav-link" href="{{ .URL }}"
-                                title="{{ .Title }}">
+                            <a class="dropdown-item text-center nav-link" href="{{ .URL }}" title="{{ .Title }}">
                                 {{ .Name }}
                             </a>
                             {{ end }}
@@ -178,10 +189,14 @@
                         <!-- darkmode mode toggle -->
                         <div class="text-center">
                             <button id="theme-toggle">
-                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                                 </svg>
-                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="5"></circle>
                                     <line x1="12" y1="1" x2="12" y2="3"></line>
                                     <line x1="12" y1="21" x2="12" y2="23"></line>

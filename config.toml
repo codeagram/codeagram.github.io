@@ -59,11 +59,11 @@ animate = true
 
   [params.hero]
   enable = true
-  intro = "Hi, my name is"
-  title = "Arunkumar."
+  intro = ""
+  title = "Hi, I'm Arunkumar."
   subtitle = "Crafting digital experiences that matter"
   content = "A software engineer passionate about building reliable, scalable, and innovative solutions."
-  image = "/images/avatar.jpg"
+  #image = "/images/avatar.jpg"
 
     [params.hero.bottomImage]
     enable = true
