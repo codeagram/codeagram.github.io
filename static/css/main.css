@@ -893,6 +893,10 @@ input[type="range"]::-ms-fill-lower {
   z-index: 40;
 }
 
+.block {
+  display: block;
+}
+
 .h-6 {
   height: 1.5rem;
 }

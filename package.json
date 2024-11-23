@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tailwindcss build assets/css/main.css -o static/css/main.css",
+    "build": "tailwindcss build ./themes/hugofolio/assets/css/main.css -o ./assets/css/main.css",
     "watch": "tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --watch"
   },
   "keywords": [],
