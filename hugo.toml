@@ -5,3 +5,18 @@ theme = 'hugofolio'
 
 [params]
 customCSS = ["css/main.css"]
+
+[[menus.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[menus.main]]
+  Name = "About"
+  url = "/about/"
+  weight = 2
+
+[[menus.main]]
+  name = "Projects"
+  url = "/projects/"
+  weight = 3
