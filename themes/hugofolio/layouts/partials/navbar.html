@@ -1,83 +1,111 @@
-<nav class="top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50">
-    <div class="max-w-6xl mx-auto px-4">
-        <div class="flex items-center justify-between h-16">
-            <!-- Logo -->
-            <a href="/" class="flex-shrink-0">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" />
+<section id="navbar" class="z-10000 min-w-screen mb-10">
+    <div id="overlay-dropdown"
+        class="z-1001 fixed inset-0 hidden md:hidden flex-col backdrop-blur-xl bg-gray-dark/30 text-gray-dark dark:text-gray-light">
+        <div class="flex md:hidden flex-row ml-3 mt-5">
+            <input type="checkbox" id="light-switch" name="light-switch" class="light-switch sr-only" />
+            <label class="relative cursor-pointer p-2" for="light-switch">
+                <svg class=" hidden dark:block scale-150" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <path class="fill-gray-light"
+                        d="M7 0h2v2H7zM12.88 1.637l1.414 1.415-1.415 1.413-1.413-1.414zM14 7h2v2h-2zM12.95 14.433l-1.414-1.413 1.413-1.415 1.415 1.414zM7 14h2v2H7zM2.98 14.364l-1.413-1.415 1.414-1.414 1.414 1.415zM0 7h2v2H0zM3.05 1.706 4.463 3.12 3.05 4.535 1.636 3.12z" />
+                    <path class="fill-gray-light" d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z" />
+                </svg>
+                <svg class="dark:hidden scale-150" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <path class="fill-gray-dark"
+                        d="M6.2 1C3.2 1.8 1 4.6 1 7.9 1 11.8 4.2 15 8.1 15c3.3 0 6-2.2 6.9-5.2C9.7 11.2 4.8 6.3 6.2 1Z" />
+                    <path class="fill-gray-dark"
+                        d="M12.5 5a.625.625 0 0 1-.625-.625 1.252 1.252 0 0 0-1.25-1.25.625.625 0 1 1 0-1.25 1.252 1.252 0 0 0 1.25-1.25.625.625 0 1 1 1.25 0c.001.69.56 1.249 1.25 1.25a.625.625 0 1 1 0 1.25c-.69.001-1.249.56-1.25 1.25A.625.625 0 0 1 12.5 5Z" />
+                </svg>
+                <span class="sr-only">Switch to light / dark version</span>
+            </label>
+        </div>
+        <ul class="flex flex-col space-y-10 items-center justify-center flex-grow">
+            <li><a href="#hero" class="text-5xl  hover:underline">Home</a></li>
+            <li><a href="#experience" class="text-5xl hover:underline">Experience</a></li>
+            <li><a href="#skills" class="text-5xl hover:underline">Skills</a></li>
+            <li><a href="#projects" class="text-5xl hover:underline">Projects</a></li>
+        </ul>
+    </div>
+    <div class="w-full h-16 z-40 flex items-center justify-between px-4">
+        <div class="flex items-center">
+            <a href="#hero" class="select-none"><svg class="dark:fill-gray-light fill-gray-dark h-8 w-auto -ml-4"
+                    version="1.0" xmlns="http://www.w3.org/2000/svg" width="134.000000pt" height="80.000000pt"
+                    viewBox="0 0 134.000000 80.000000" preserveAspectRatio="xMidYMid meet">
+
+                    <g transform="translate(0.000000,80.000000) scale(0.100000,-0.100000)" stroke="none">
+                        <path d="M515 779 c88 -10 198 -20 244 -21 78 -3 84 -2 92 20 l8 22 -252 -1
+                    -252 -1 160 -19z" />
+                        <path d="M742 418 c-89 -211 -164 -391 -168 -401 -6 -16 2 -17 122 -15 l128 3
+                    25 62 24 63 97 0 98 0 7 -65 7 -65 126 0 127 0 -27 378 c-15 207 -27 387 -27
+                    400 l-1 22 -189 0 -188 0 -161 -382z m308 22 l0 -110 -49 0 -49 0 35 88 c19
+                    48 39 97 44 110 5 12 11 22 14 22 3 0 5 -49 5 -110z" />
+                        <path d="M310 674 c19 -5 474 -53 476 -51 2 1 5 14 9 30 l7 27 -253 -1 c-140
+                    -1 -247 -3 -239 -5z" />
+                        <path d="M508 523 c123 -14 225 -24 226 -22 2 2 7 14 10 27 l7 22 -233 -1
+                    -233 -1 223 -25z" />
+                        <path d="M405 405 c221 -26 285 -30 285 -16 0 5 3 16 6 25 6 14 -20 16 -242
+                    15 l-249 -1 200 -23z" />
+                        <path d="M165 303 c64 -12 461 -50 466 -45 4 4 10 17 14 30 l6 22 -253 -1
+                    c-139 -1 -244 -3 -233 -6z" />
+                        <path d="M102 185 c4 -4 438 -55 468 -55 6 0 30 44 30 55 0 3 -113 5 -252 5
+                    -138 0 -249 -2 -246 -5z" />
+                        <path d="M255 34 c264 -30 269 -30 283 1 l12 25 -248 -1 -247 -2 200 -23z" />
+                    </g>
                 </svg>
             </a>
+        </div>
+        <div class="flex flex-row gap-8">
+            <ul class="hidden md:flex space-x-6 items-center">
+                <li class="relative group">
+                    <a href="#hero" class="text-xl">Home</a>
+                    <div
+                        class="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full bg-gray-dark dark:bg-gray-light transition-all duration-500">
+                    </div>
+                </li>
+                <li class="relative group">
+                    <a href="#experience" class="text-xl">Experience</a>
+                    <div
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-dark dark:bg-gray-light group-hover:w-full transition-all duration-500">
+                    </div>
+                </li>
+                <li class="relative group">
+                    <a href="#skills" class="text-xl">Skills</a>
+                    <div
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-dark dark:bg-gray-light group-hover:w-full transition-all duration-500">
+                    </div>
+                </li>
+                <li class="relative group">
+                    <a href="#projects" class="text-xl">Projects</a>
+                    <div
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-dark dark:bg-gray-light group-hover:w-full transition-all duration-500">
+                    </div>
+                </li>
+            </ul>
 
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-8">
-                {{ $currentPage := . }}
-                {{ range .Site.Menus.main }}
-                {{ if ne $currentPage.RelPermalink .URL }}
-                <a href="{{ .URL }}"
-                    class="text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white {{ if eq $currentPage.RelPermalink .URL }}underline{{ end }}">
-                    {{ .Name }}
-                </a>
-                {{ end }}
-                {{ end }}
-                <button id="darkModeToggle" class="p-2">
-                    <svg class="w-6 h-6 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            <div class="hidden md:flex flex-row justify-center ml-3">
+                <input type="checkbox" id="light-switch" name="light-switch" class="light-switch sr-only" />
+                <label class="relative cursor-pointer p-2" for="light-switch">
+                    <svg class=" hidden dark:block scale-150" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                        <path class="fill-gray-light"
+                            d="M7 0h2v2H7zM12.88 1.637l1.414 1.415-1.415 1.413-1.413-1.414zM14 7h2v2h-2zM12.95 14.433l-1.414-1.413 1.413-1.415 1.415 1.414zM7 14h2v2H7zM2.98 14.364l-1.413-1.415 1.414-1.414 1.414 1.415zM0 7h2v2H0zM3.05 1.706 4.463 3.12 3.05 4.535 1.636 3.12z" />
+                        <path class="fill-gray-light" d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z" />
                     </svg>
-                    <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
+                    <svg class="dark:hidden scale-150" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+                        <path class="fill-gray-dark"
+                            d="M6.2 1C3.2 1.8 1 4.6 1 7.9 1 11.8 4.2 15 8.1 15c3.3 0 6-2.2 6.9-5.2C9.7 11.2 4.8 6.3 6.2 1Z" />
+                        <path class="fill-gray-dark"
+                            d="M12.5 5a.625.625 0 0 1-.625-.625 1.252 1.252 0 0 0-1.25-1.25.625.625 0 1 1 0-1.25 1.252 1.252 0 0 0 1.25-1.25.625.625 0 1 1 1.25 0c.001.69.56 1.249 1.25 1.25a.625.625 0 1 1 0 1.25c-.69.001-1.249.56-1.25 1.25A.625.625 0 0 1 12.5 5Z" />
                     </svg>
-                </button>
+                    <span class="sr-only">Switch to light / dark version</span>
+                </label>
             </div>
+        </div>
 
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden flex items-center">
-                <button id="darkModeToggleMobile" class="p-2 mr-4">
-                    <svg class="w-6 h-6 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                    <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
-                    </svg>
-                </button>
-                <button id="mobileMenuButton" class="p-2">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M4 6h16M4 12h16M4 18h16" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                </button>
-            </div>
+        <div id="navbar-toggler" class="z-1002 md:hidden -mr-5 flex flex-col space-y-1 cursor-pointer toggler"
+            onclick="mobilenav()">
+            <div id="line1" class="w-6 h-0.5 bg-gray-dark dark:bg-gray-light transition-all duration-500"></div>
+            <div id="line2" class="w-6 h-0.5 bg-gray-dark dark:bg-gray-light transition-all duration-500"></div>
+            <div id="line3" class="w-6 h-0.5 bg-gray-dark dark:bg-gray-light transition-all duration-500"></div>
         </div>
-    </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden fixed inset-0 bg-white dark:bg-gray-900 z-50">
-        <div class="flex justify-between items-center p-4">
-            <button id="darkModeToggleMobileMenu" class="p-2">
-                <svg class="w-6 h-6 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-                <svg class="w-6 h-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
-                </svg>
-            </button>
-            <button id="closeMenu" class="p-2">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round" />
-                </svg>
-            </button>
-        </div>
-        <div class="flex flex-col items-center space-y-8 mt-16">
-            {{ range .Site.Menus.main }}
-            <a href="{{ .URL }}"
-                class="text-xl text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white">
-                {{ .Name }}
-            </a>
-            {{ end }}
-        </div>
-    </div>
-</nav>
+        </nav>
+</section>
