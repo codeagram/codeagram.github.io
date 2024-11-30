@@ -3,18 +3,107 @@
 
 <head>
   {{ partial "head.html" . }}
+  <style>
+    ::-webkit-scrollbar {
+      display: none;
+      scrollbar-width: 0;
+    }
+
+
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      /* For Internet Explorer 10+ */
+      scrollbar-width: none;
+      /* For Firefox */
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      overflow: visible;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      background-color: #ffffff;
+      color: #000000;
+      text-align: center;
+      padding: 0.5rem 0.5rem;
+      transform: translateX(-50%);
+
+      position: absolute;
+      z-index: 1000;
+      top: -120%;
+      left: -80%;
+
+      font-family: "Roboto", cursive;
+      font-weight: 400;
+      font-style: normal;
+      white-space: nowrap;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      max-width: calc(100vw - 20vw);
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 5s ease-in-out;
+    }
+  </style>
 </head>
 
-<body>
-  <header>
-    {{ partial "header.html" . }}
-  </header>
-  <main>
+<body class="relative bg-[#a3c9a0] dark:bg-gray-dark font-mono overflow-auto scrollbar-hide scroll-smooth">
+  {{ block "back-ground" . }}
+  {{ partial "background.html" . }}
+  {{ end }}
 
-    {{ block "main" . }}{{ end }}
-  </main>
-  <footer>
-  </footer>
+  <section id="content" class="relative z-100 px-4 md:w-10/12 m-auto text-gray-dark dark:text-gray-light min-h-screen">
+    <header>
+      {{ partial "header.html" . }}
+    </header>
+    <main>
+
+      {{ block "main" . }}{{ end }}
+    </main>
+    <footer>
+    </footer>
+    {{ partial "footer.html" . }}
+  </section>
+  <script>
+
+    var toggleflag = 0;
+    var overlay = document.getElementById("overlay-dropdown");
+    var toggler = document.getElementById("navbar-toggler");
+    var line1 = document.getElementById("line1");
+    var line2 = document.getElementById("line2");
+    var line3 = document.getElementById("line3");
+
+    function mobilenav() {
+      if (toggleflag == 0) {
+        overlay.classList.remove("hidden");
+        overlay.classList.add("flex");
+        document.body.classList.add("overflow-hidden");
+
+        // Animate menu icon
+        line1.style.transform = "rotate(50deg) translate(5px, 5px)";
+        line2.style.opacity = "0";
+        line3.style.transform = "rotate(-50deg) translate(5px, -5px)";
+
+        toggleflag = 1;
+      } else {
+        overlay.classList.remove("flex");
+        overlay.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+        // Reset menu icon
+        line1.style.transform = "rotate(0deg) translate(0, 0)";
+        line2.style.opacity = "1";
+        line3.style.transform = "rotate(0deg) translate(0, 0)";
+
+        toggleflag = 0;
+      }
+    }
+  </script>
 </body>
 
 </html>
