@@ -20,3 +20,7 @@ customCSS = ["css/main.css"]
   name = "Projects"
   url = "/projects/"
   weight = 3
+
+[services]
+  [services.googleAnalytics]
+    id = 'G-GB36JSNSCX'
