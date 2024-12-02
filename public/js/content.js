@@ -13,14 +13,14 @@
       if (localStorage.getItem("dark-mode") === "true") {
         cell.style.backgroundColor = "#ffffff14";
       } else {
-        cell.style.backgroundColor = "#d1e8d2";
+        cell.style.backgroundColor = "#dee3e0";
       }
       cell.addEventListener("mouseover", () => {
         cell.style.transform = "scale(1.2) perspective(500px)";
         if (localStorage.getItem("dark-mode") === "true") {
           cell.style.backgroundColor = "#ffffff33";
         } else {
-          cell.style.backgroundColor = "#fff";
+          cell.style.backgroundColor = "#f3f2f2";
         }
         cell.style.zIndex = "2";
         cell.style.boxShadow = "0 0 10px 5px rgba(255, 255, 255, 0.3)";
@@ -30,7 +30,7 @@
         if (localStorage.getItem("dark-mode") === "true") {
           cell.style.backgroundColor = "#ffffff14";
         } else {
-          cell.style.backgroundColor = "#d1e8d2";
+          cell.style.backgroundColor = "#dee3e0";
         }
         cell.style.zIndex = "auto";
         cell.style.boxShadow = "none";
