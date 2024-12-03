@@ -4,3 +4,49 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: 0;
+}
+
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* For Internet Explorer 10+ */
+    scrollbar-width: none;
+    /* For Firefox */
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    overflow: visible;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    padding: 0.5rem 0.5rem;
+    transform: translateX(-50%);
+
+    position: absolute;
+    z-index: 1000;
+    top: -120%;
+    left: 100%;
+
+    font-family: "Roboto", cursive;
+    font-weight: 400;
+    font-style: normal;
+    white-space: nowrap;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-width: calc(100vw - 20vw);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 5s ease-in-out;
+}

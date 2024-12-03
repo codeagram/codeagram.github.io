@@ -13,7 +13,9 @@
         saffron: "#FF9933",
         white: "#FFFFFF",
         green: "#128807",
-        navy: "#000088"
+        navy: "#000088",
+        success: "#15803D",
+        error: "#ef2a2a"
       },
       fontFamily: {
         mono: ["IBM Plex Mono", "monospace"],
@@ -30,10 +32,19 @@
             "50%": { transform: "rotate(10.0deg)" },
             "60%": { transform: "rotate(0.0deg)" },
             "100%": { transform: "rotate(0.0deg)" }
+          },
+          shake: {
+            "0%, 100%": { transform: "translateX(0)" },
+            "10%": { transform: "translateX(-5px)" },
+            "20%": { transform: "translateX(5px)" },
+            "30%": { transform: "translateX(-5px)" },
+            "40%": { transform: "translateX(5px)" },
+            "50%": { transform: "translateX(0)" }
           }
         },
         animation: {
-          "waving-hand": "wave 2s linear infinite"
+          "waving-hand": "wave 2s linear infinite",
+          shake: "shake 0.5s ease-in-out"
         }
       }
     }

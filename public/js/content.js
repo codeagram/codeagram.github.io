@@ -95,4 +95,26 @@
       document.body.classList.remove("overflow-hidden");
     });
   });
+  var socialLinks = document.getElementById("social-links");
+  var heroSection = document.getElementById("hero");
+  window.addEventListener("scroll", () => {
+    if (window.innerWidth > 768) {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      if (heroBottom <= 0) {
+        socialLinks.classList.remove("md:relative");
+        socialLinks.classList.add("md:fixed");
+        socialLinks.classList.add("md:bottom-40");
+        socialLinks.classList.add("md:left-10");
+        socialLinks.classList.add("md:flex-col");
+        socialLinks.classList.add("md:w-10");
+      } else {
+        socialLinks.classList.remove("md:fixed");
+        socialLinks.classList.remove("md:bottom-40");
+        socialLinks.classList.remove("md:left-10");
+        socialLinks.classList.remove("md:flex-col");
+        socialLinks.classList.add("md:relative");
+        socialLinks.classList.remove("md:w-10");
+      }
+    }
+  });
 })();

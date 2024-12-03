@@ -3,5 +3,5 @@
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 <script src="https://cdn.tailwindcss.com"></script>
 {{ partial "head/css.html" . }}
-{{ partial "head/js.html" . }}
+{{ partial "head/head.js.html" . }}
 {{ template "_internal/google_analytics.html" . }}
