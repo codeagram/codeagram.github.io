@@ -1,23 +1,23 @@
-<section id="contact" class="md:w-8/12 min-h-screen">
+<section id="contact" class="md:10/12 lg:w-8/12 min-h-screen">
     <h2 class="text-4xl font-bold mt-12 mb-4 underline decoration-blue">Contact</h2>
     <p class="text-xl mt-12 mb-6">Let's start a conversation</p>
     <form id="contactForm" class="space-y-4">
         <div class="bg-transparent">
             <label for="fullName" class="block text-sm font-medium">Full Name</label>
             <input type="text" id="fullName" name="fullName"
-                class="mt-1 block w-full px-3 py-2 border rounded-md bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark">
+                class="mt-1 block w-full px-3 py-2 border-2 rounded-md bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark">
             <p id="fullNameError" class="text-error text-md font-bold mt-2 hidden">Full name is required</p>
         </div>
         <div>
             <label for="email" class="block text-sm font-medium">Email</label>
             <input type="text" id="email" name="email"
-                class="mt-1 block w-full px-3 py-2 rounded-md bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark">
+                class="mt-1 block w-full px-3 py-2 rounded-md border-2 bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark">
             <p id="emailError" class="text-error text-md font-bold mt-2 hidden">Valid email is required</p>
         </div>
         <div>
             <label for="message" class="block text-sm font-medium">Message</label>
             <textarea id="message" name="message" rows="4"
-                class="mt-1 block w-full px-3 py-2 rounded-md bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark"></textarea>
+                class="mt-1 block w-full px-3 py-2 border-2 rounded-md bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark"></textarea>
             <p id="messageError" class="text-error text-md font-bold mt-2 hidden">Message is required
             </p>
         </div>
@@ -27,27 +27,29 @@
                 Submit
             </button>
         </div>
-        <div id="successMessage" class="hidden text-success text-md font-bold">
+        <div id="successMessage" class="hidden text-success text-xl font-bold animate-bounce">
             Message sent successfully!
         </div>
     </form>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function (event) {
-            event.preventDefault();
 
-            // Reset previous error states
+        const removePreviousState = () => {
             ['fullName', 'email', 'message'].forEach(field => {
                 const input = document.getElementById(field);
                 const errorElement = document.getElementById(`${field}Error`);
-                input.classList.remove('border-error');
+                input.classList.remove('border-error', 'border-success');
                 errorElement.classList.add('hidden');
             });
+        }
 
-            // Validation flags
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            removePreviousState();
+
             let isValid = true;
 
-            // Full Name Validation
             const fullName = document.getElementById('fullName');
             const fullNameError = document.getElementById('fullNameError');
             if (!fullName.value.trim()) {
@@ -58,9 +60,10 @@
                 setTimeout(() => {
                     fullName.classList.remove('animate-shake');
                 }, 500);
+            } else {
+                fullName.classList.add('border-success');
             }
 
-            // Email Validation
             const email = document.getElementById('email');
             const emailError = document.getElementById('emailError');
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -72,9 +75,10 @@
                 setTimeout(() => {
                     email.classList.remove('animate-shake');
                 }, 500);
+            } else {
+                email.classList.add('border-success');
             }
 
-            // Message Validation
             const message = document.getElementById('message');
             const messageError = document.getElementById('messageError');
             if (!message.value.trim()) {
@@ -85,6 +89,8 @@
                 setTimeout(() => {
                     message.classList.remove('animate-shake');
                 }, 500);
+            } else {
+                message.classList.add('border-success');
             }
 
             // If all validations pass
@@ -92,7 +98,7 @@
                 const successMessage = document.getElementById('successMessage');
                 successMessage.classList.remove('hidden');
                 this.reset();
-
+                removePreviousState();
 
                 // Reset form after 3 seconds
                 setTimeout(() => {

@@ -2,16 +2,16 @@
 <html lang="en-us" dir="ltr">
 
 <head>
-	<meta name="generator" content="Hugo 0.139.3">
+	<meta name="generator" content="Hugo 0.139.3"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Arunkumar | Software Engineer</title>
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link rel="stylesheet" href="/css/main.min.804e62d809fc2f99a306577a3cfc3f44da42561bda366655477e6aed8618f760.css" integrity="sha256-gE5i2An8L5mjBld6PPw/RNpCVhvaNmZVR35q7YYY92A=" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/main.css">
 <script src="https://cdn.tailwindcss.com"></script>
 
-<script src="/js/main.c3fa4148d4637d44b50079cadeb70d3a77ac7d9f793e2346e86155932c6ea91c.js" integrity="sha256-w/pBSNRjfUS1AHnK3rcNOnesfZ95PiNG6GFVkyxuqRw=" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-GB36JSNSCX"></script>
       <script>
@@ -161,7 +161,7 @@
     <main>
 
       
-<div class="md:w-8/12 m-auto">
+<div class="w-full md:10/12 lg:w-8/12 m-auto">
     <section id="hero" class="min-h-screen">
         <div class="flex flex-col">
             <p class="text text-2xl font-medium">I'm Arunkumar <span
@@ -1344,26 +1344,26 @@
             </div>
         </div>
     </section>
-    <section id="contact" class="md:w-8/12 min-h-screen">
+    <section id="contact" class="md:10/12 lg:w-8/12 min-h-screen">
     <h2 class="text-4xl font-bold mt-12 mb-4 underline decoration-blue">Contact</h2>
     <p class="text-xl mt-12 mb-6">Let's start a conversation</p>
     <form id="contactForm" class="space-y-4">
         <div class="bg-transparent">
             <label for="fullName" class="block text-sm font-medium">Full Name</label>
             <input type="text" id="fullName" name="fullName"
-                class="mt-1 block w-full px-3 py-2 border rounded-md bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark">
+                class="mt-1 block w-full px-3 py-2 border-2 rounded-md bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark">
             <p id="fullNameError" class="text-error text-md font-bold mt-2 hidden">Full name is required</p>
         </div>
         <div>
             <label for="email" class="block text-sm font-medium">Email</label>
             <input type="text" id="email" name="email"
-                class="mt-1 block w-full px-3 py-2 rounded-md bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark">
+                class="mt-1 block w-full px-3 py-2 rounded-md border-2 bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark">
             <p id="emailError" class="text-error text-md font-bold mt-2 hidden">Valid email is required</p>
         </div>
         <div>
             <label for="message" class="block text-sm font-medium">Message</label>
             <textarea id="message" name="message" rows="4"
-                class="mt-1 block w-full px-3 py-2 rounded-md bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark"></textarea>
+                class="mt-1 block w-full px-3 py-2 border-2 rounded-md bg-[#dee3e0] focus:bg-white focus:border-white focus:ring-white dark:bg-[#ffffff14] dark:focus:bg-gray-dark dark:focus:border-gray-dark dark:focus:ring-gray-dark"></textarea>
             <p id="messageError" class="text-error text-md font-bold mt-2 hidden">Message is required
             </p>
         </div>
@@ -1373,27 +1373,29 @@
                 Submit
             </button>
         </div>
-        <div id="successMessage" class="hidden text-success text-md font-bold">
+        <div id="successMessage" class="hidden text-success text-xl font-bold animate-bounce">
             Message sent successfully!
         </div>
     </form>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function (event) {
-            event.preventDefault();
 
-            
+        const removePreviousState = () => {
             ['fullName', 'email', 'message'].forEach(field => {
                 const input = document.getElementById(field);
                 const errorElement = document.getElementById(`${field}Error`);
-                input.classList.remove('border-error');
+                input.classList.remove('border-error', 'border-success');
                 errorElement.classList.add('hidden');
             });
+        }
 
-            
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            removePreviousState();
+
             let isValid = true;
 
-            
             const fullName = document.getElementById('fullName');
             const fullNameError = document.getElementById('fullNameError');
             if (!fullName.value.trim()) {
@@ -1404,9 +1406,10 @@
                 setTimeout(() => {
                     fullName.classList.remove('animate-shake');
                 }, 500);
+            } else {
+                fullName.classList.add('border-success');
             }
 
-            
             const email = document.getElementById('email');
             const emailError = document.getElementById('emailError');
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1418,9 +1421,10 @@
                 setTimeout(() => {
                     email.classList.remove('animate-shake');
                 }, 500);
+            } else {
+                email.classList.add('border-success');
             }
 
-            
             const message = document.getElementById('message');
             const messageError = document.getElementById('messageError');
             if (!message.value.trim()) {
@@ -1431,6 +1435,8 @@
                 setTimeout(() => {
                     message.classList.remove('animate-shake');
                 }, 500);
+            } else {
+                message.classList.add('border-success');
             }
 
             
@@ -1438,7 +1444,7 @@
                 const successMessage = document.getElementById('successMessage');
                 successMessage.classList.remove('hidden');
                 this.reset();
-
+                removePreviousState();
 
                 
                 setTimeout(() => {
@@ -1456,10 +1462,10 @@
     <footer>
     </footer>
     
-<script src="/js/content.e8f2f94b3c6a6f718af7b86fc44cfb01c211b734b13aa15f1f1854ffba30d991.js" integrity="sha256-6PL5Szxqb3GK97hvxEz7AcIRtzSxOqFfHxhU/7ow2ZE=" crossorigin="anonymous"></script>
+<script src="/js/content.js"></script>
   </section>
   
-<script src="/js/content.e8f2f94b3c6a6f718af7b86fc44cfb01c211b734b13aa15f1f1854ffba30d991.js" integrity="sha256-6PL5Szxqb3GK97hvxEz7AcIRtzSxOqFfHxhU/7ow2ZE=" crossorigin="anonymous"></script>
+<script src="/js/content.js"></script>
   <script>
     var toggleflag = 0;
     var overlay = document.getElementById("overlay-dropdown");
