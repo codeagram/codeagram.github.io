@@ -1450,20 +1450,16 @@
                 const successMessage = document.getElementById('successMessage');
 
                 try {
-                    
-                    await new Promise(resolve => setTimeout(resolve, 2000)); 
-
-                    
                     const postData = {
                         fullName: fullName,
                         email: email,
                         message: message
                     };
 
-                    
                     const response = await fetch('https://4h5whl3oxgkeghxqnuccavtlvu0ftupa.lambda-url.eu-north-1.on.aws/', {
                         method: 'POST',
                         headers: {
+                            'Access-Control-Allow-Origin': '*',
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify(postData)
