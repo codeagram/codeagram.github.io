@@ -117,4 +117,22 @@
       }
     }
   });
+  var toTop = document.getElementById("toTop");
+  window.onscroll = function() {
+    scrollFunction();
+  };
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      toTop.classList.remove("hidden");
+    } else {
+      toTop.classList.add("hidden");
+    }
+  }
+  toTop.addEventListener("click", function() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  });
 })();
