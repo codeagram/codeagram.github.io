@@ -147,15 +147,15 @@ window.addEventListener("scroll", () => {
       // Add the "fixed" class when the hero section is scrolled past
       socialLinks.classList.remove("md:relative");
       socialLinks.classList.add("md:fixed");
-      socialLinks.classList.add("md:bottom-40");
-      socialLinks.classList.add("md:left-10");
+      socialLinks.classList.add("md:bottom-1/3");
+      socialLinks.classList.add("md:left-4");
       socialLinks.classList.add("md:flex-col");
       socialLinks.classList.add("md:w-10");
     } else {
       // Remove the "fixed" class when the hero section is in view
       socialLinks.classList.remove("md:fixed");
-      socialLinks.classList.remove("md:bottom-40");
-      socialLinks.classList.remove("md:left-10");
+      socialLinks.classList.remove("md:bottom-1/3");
+      socialLinks.classList.remove("md:left-4");
       socialLinks.classList.remove("md:flex-col");
       socialLinks.classList.add("md:relative");
       socialLinks.classList.remove("md:w-10");
