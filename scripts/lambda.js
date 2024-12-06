@@ -1,65 +1,51 @@
-const https = require("https");
+import https from "https";
 
-// Airtable configuration
-const AIRTABLE_API_KEY =
-  "patrbDD6IEBr6MzvU.5735696d592fb979aad2b453fd620d6089b9d29c767aafa65dfaa80e099cb06d"; // Replace with your Airtable API key
-const AIRTABLE_BASE_ID = "app0Nccvz7IalRhLt"; // Replace with your Airtable base ID
-const AIRTABLE_TABLE_NAME = "Lead"; // Replace with your table name
+const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
+const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
+const AIRTABLE_TABLE_NAME = process.env.AIRTABLE_TABLE_NAME;
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   try {
-    if (event.httpMethod !== "GET") {
-      return {
-        statusCode: 405,
-        body: JSON.stringify({ message: "Only POST method is allowed" }),
-      };
-    }
+    const { fullName, email, message } = JSON.parse(event.body);
 
-    const requestBody = JSON.parse(event.body);
-
-    /*
-    const requestBody = {
-      fullName: "Arun",
-      email: "arunmlr.jaysel@gmail.com",
-      message: "Test",
-    };
-    */
-
-    const { fullName, email, message } = requestBody;
-
-    if (!fullName || !email || !message) {
+    if (
+      !fullName ||
+      !email ||
+      !message ||
+      typeof fullName !== "string" ||
+      typeof email !== "string" ||
+      typeof message !== "string"
+    ) {
       return {
         statusCode: 400,
         body: JSON.stringify({
-          message: "Missing required fields: fullName, email, or message",
+          message:
+            "Invalid or missing required fields: fullName, email, or message",
         }),
       };
     }
 
-    const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
+    const airtableRequestOptions = {
+      hostname: "api.airtable.com",
+      path: `/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+    };
 
-    const postData = JSON.stringify({
+    const airtableData = {
       fields: {
         Name: fullName,
         Email: email,
         Message: message,
         Status: "New",
       },
-    });
-
-    const options = {
-      hostname: "api.airtable.com",
-      path: `/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`,
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${AIRTABLE_API_KEY}`,
-        "Content-Length": Buffer.byteLength(postData),
-      },
     };
 
-    const response = await new Promise((resolve, reject) => {
-      const req = https.request(options, (res) => {
+    const airtableResponse = await new Promise((resolve, reject) => {
+      const req = https.request(airtableRequestOptions, (res) => {
         let data = "";
         res.on("data", (chunk) => {
           data += chunk;
@@ -69,11 +55,8 @@ exports.handler = async (event) => {
         });
       });
 
-      req.on("error", (e) => {
-        reject(e);
-      });
-
-      req.write(postData);
+      req.on("error", reject);
+      req.write(JSON.stringify(airtableData));
       req.end();
     });
 
@@ -81,11 +64,10 @@ exports.handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({
         message: "Data successfully added to Airtable",
-        response: response,
+        response: airtableResponse,
       }),
     };
   } catch (error) {
-    console.error("Error:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({
