@@ -1,45 +1,35 @@
 function createGrid() {
-  const gridBackground = document.querySelector(".grid-background");
+  const gridBg = document.querySelector(".grid-background");
+  gridBg.innerHTML = "";
 
-  gridBackground.innerHTML = "";
+  const columnCount = Math.floor(window.innerWidth / 50);
+  const rowCount = Math.floor(window.innerHeight / 50);
 
-  const cols = Math.floor(window.innerWidth / 50); // Cell width (50px)
-  const rows = Math.floor(window.innerHeight / 50); // Cell height (50px)
+  gridBg.style.gridTemplateColumns = `repeat(${columnCount}, 1fr)`;
+  gridBg.style.gridTemplateRows = `repeat(${rowCount}, 1fr)`;
 
-  gridBackground.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-  gridBackground.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+  for (let i = 0; i < columnCount * rowCount; i++) {
+    const gridCell = document.createElement("div");
+    gridCell.classList.add("grid-cell");
 
-  for (let i = 0; i < cols * rows; i++) {
-    const cell = document.createElement("div");
-    cell.classList.add("grid-cell");
+    const isDarkMode = localStorage.getItem("dark-mode") === "true";
+    gridCell.style.backgroundColor = isDarkMode ? "#ffffff14" : "#dee3e0";
 
-    if (localStorage.getItem("dark-mode") === "true") {
-      cell.style.backgroundColor = "#ffffff14";
-    } else {
-      cell.style.backgroundColor = "#dee3e0";
-    }
-    cell.addEventListener("mouseover", () => {
-      cell.style.transform = "scale(1.2) perspective(500px)";
-      if (localStorage.getItem("dark-mode") === "true") {
-        cell.style.backgroundColor = "#ffffff33";
-      } else {
-        cell.style.backgroundColor = "#f3f2f2";
-      }
-      cell.style.zIndex = "2";
-      cell.style.boxShadow = "0 0 10px 5px rgba(255, 255, 255, 0.3)";
-    });
-    cell.addEventListener("mouseout", () => {
-      cell.style.transform = "none";
-      if (localStorage.getItem("dark-mode") === "true") {
-        cell.style.backgroundColor = "#ffffff14";
-      } else {
-        cell.style.backgroundColor = "#dee3e0";
-      }
-      cell.style.zIndex = "auto";
-      cell.style.boxShadow = "none";
+    gridCell.addEventListener("mouseover", () => {
+      gridCell.style.transform = "scale(1.2) perspective(500px)";
+      gridCell.style.backgroundColor = isDarkMode ? "#ffffff33" : "#f3f2f2";
+      gridCell.style.zIndex = "2";
+      gridCell.style.boxShadow = "0 0 10px 5px rgba(255, 255, 255, 0.3)";
     });
 
-    gridBackground.appendChild(cell);
+    gridCell.addEventListener("mouseout", () => {
+      gridCell.style.transform = "none";
+      gridCell.style.backgroundColor = isDarkMode ? "#ffffff14" : "#dee3e0";
+      gridCell.style.zIndex = "auto";
+      gridCell.style.boxShadow = "none";
+    });
+
+    gridBg.appendChild(gridCell);
   }
 }
 
