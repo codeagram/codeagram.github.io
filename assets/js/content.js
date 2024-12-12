@@ -3,8 +3,8 @@ function createGrid() {
 
   gridBackground.innerHTML = "";
 
-  const cols = Math.floor(window.innerWidth / 50); // Cell width (50px)
-  const rows = Math.floor(window.innerHeight / 50); // Cell height (50px)
+  const cols = Math.floor(window.innerWidth / 100); // Cell width (50px)
+  const rows = Math.floor(window.innerHeight / 100); // Cell height (50px)
 
   gridBackground.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
   gridBackground.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
@@ -14,14 +14,14 @@ function createGrid() {
     cell.classList.add("grid-cell");
 
     if (localStorage.getItem("dark-mode") === "true") {
-      cell.style.backgroundColor = "#ffffff14";
+      cell.style.backgroundColor = "#061322";
     } else {
       cell.style.backgroundColor = "#dee3e0";
     }
     cell.addEventListener("mouseover", () => {
-      cell.style.transform = "scale(1.2) perspective(500px)";
+      cell.style.transform = "scale(1.2) perspective(500px) 5s";
       if (localStorage.getItem("dark-mode") === "true") {
-        cell.style.backgroundColor = "#ffffff33";
+        cell.style.backgroundColor = "#111827";
       } else {
         cell.style.backgroundColor = "#f3f2f2";
       }
@@ -31,7 +31,7 @@ function createGrid() {
     cell.addEventListener("mouseout", () => {
       cell.style.transform = "none";
       if (localStorage.getItem("dark-mode") === "true") {
-        cell.style.backgroundColor = "#ffffff14";
+        cell.style.backgroundColor = "#061322";
       } else {
         cell.style.backgroundColor = "#dee3e0";
       }

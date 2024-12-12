@@ -3,11 +3,11 @@ tailwind.config = {
   theme: {
     colors: {
       gray: {
-        dark: "#141414",
-        medium: "#C6C6C6",
-        light: "#E1E1E1",
+        dark: "#111827",
+        medium: "#D1D5DB",
+        light: "#F2EFEE",
       },
-      blue: "#3B82F6",
+      blue: "#3AD49B",
       saffron: "#FF9933",
       white: "#FFFFFF",
       green: "#128807",
