@@ -3,8 +3,8 @@
   function createGrid() {
     const gridBackground = document.querySelector(".grid-background");
     gridBackground.innerHTML = "";
-    const cols = Math.floor(window.innerWidth / 100);
-    const rows = Math.floor(window.innerHeight / 100);
+    const cols = Math.floor(window.innerWidth / 60);
+    const rows = Math.floor(window.innerHeight / 60);
     gridBackground.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
     gridBackground.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
     for (let i = 0; i < cols * rows; i++) {
