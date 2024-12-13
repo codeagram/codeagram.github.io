@@ -31,17 +31,17 @@
 <body class="relative bg-[#96a095] dark:bg-gray-dark font-mono overflow-auto scrollbar-hide scroll-smooth">
   
   <section id="grid-background"
-    class="grid-background fixed inset-0 bg-fixed bg-center bg-cover grid gap-0.25 dark:gap-0.5">
+    class="z-0 grid-background fixed inset-0 bg-fixed bg-center bg-cover grid gap-0.25 dark:gap-0.5">
 </section>
   
 
-  <section id="content" class="relative z-100 px-4 md:w-10/12 m-auto text-gray-dark dark:text-gray-light min-h-screen">
+  <section id="content" class="relative z-auto px-4 md:w-10/12 m-auto text-gray-dark dark:text-gray-light">
     <header>
-      <section id="navbar" class="z-10000 min-w-screen mb-10">
+      <section id="navbar" class="z-10000 mb-4">
     <div id="overlay-dropdown"
-        class="z-1001 fixed inset-0 hidden md:hidden flex-col backdrop-blur-xl bg-gray-dark/30 text-gray-dark dark:text-gray-light">
-        
-        <ul class="flex flex-col space-y-10 items-center justify-center flex-grow">
+        class="h-screen z-40 absolute inset-0 hidden md:hidden flex-col backdrop-blur-3xl bg-gray-dark/30 text-gray-dark dark:text-gray-light"
+        style="min-height: 100dvh;">
+        <ul class="flex flex-col space-y-12 items-center justify-center flex-grow h-screen">
             <li><a href="#hero" class="text-5xl  hover:underline">Home</a></li>
             <li><a href="#experience" class="text-5xl hover:underline">Experience</a></li>
             <li><a href="#skills" class="text-5xl hover:underline">Skills</a></li>
@@ -112,10 +112,10 @@
                 </li>
             </ul>
 
-            
+
         </div>
 
-        <div id="navbar-toggler" class="z-1002 md:hidden -mr-5 flex flex-col space-y-1 cursor-pointer toggler"
+        <div id="navbar-toggler" class="z-50 md:hidden -mr-5 flex flex-col space-y-1 cursor-pointer toggler"
             onclick="mobilenav()">
             <div id="line1" class="w-6 h-0.5 bg-gray-dark dark:bg-blue transition-all duration-500"></div>
             <div id="line2" class="w-6 h-0.5 bg-gray-dark dark:bg-blue transition-all duration-500"></div>
@@ -129,7 +129,7 @@
 
       
 <div class="w-full md:10/12 lg:w-8/12 m-auto">
-    <section id="hero" class="min-h-screen">
+    <section id="hero">
         <div class="flex flex-col">
             <p class="text text-2xl font-medium">I'm Arunkumar <span
                     class="inline-block origin-bottom  cursor-pointer select-none active:animate-waving-hand hover:scale-125 transition duration-300">&#128075;</span>
@@ -322,7 +322,7 @@
                 </svg><span class="tooltiptext">Instagram Page</span></a>
         </div>
     </section>
-    <section id="experience" class="min-h-screen flex flex-wrap justify-between">
+    <section class="flex flex-wrap justify-between z-10">
         <div>
             <p class="text-4xl font-bold underline decoration-blue my-12">Work Experience</p>
             <ol class="relative border-s border-gray-dark dark:border-gray-light">
@@ -382,7 +382,7 @@
             </ol>
         </div>
     </section>
-    <section id="skills" class="min-h-screen flex flex-wrap justify-between">
+    <section id="skills" class="flex flex-wrap justify-between">
         <h1 class="text-4xl font-bold my-12 mb-4 underline decoration-blue">My Tech Stack</h1>
         <p class="text-lg text-justify mb-4">My expertise spans a diverse range of technologies, enabling me to
             deliver
@@ -1223,7 +1223,7 @@
             </section>
         </section>
     </section>
-    <section id="projects" class="min-h-screen mt-6">
+    <section id="projects" class="mt-6">
         <h1 class="text-4xl font-bold mt-12 mb-4 underline decoration-blue">Projects</h1>
         <div class="container mx-auto">
             <div class="relative flex flex-col md:flex-row items-center gap-8 py-12">
@@ -1304,7 +1304,7 @@
             </div>
         </div>
     </section>
-    <section id="contact" class="md:w-10/12 lg:w-8/12 min-h-screen">
+    <section id="contact" class="md:w-10/12 lg:w-8/12 mb-16">
     <h2 class="text-4xl font-bold mt-12 mb-4 underline decoration-blue">Contact</h2>
     <p class="text-xl mt-12 mb-6">Let's start a conversation</p>
     <form id="contactForm" class="space-y-4">
